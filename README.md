@@ -7,7 +7,7 @@ AC is all-clear and reset the screen backto 0;
 
 This is how the calculator looks like, all styles from iPhone calculator by ios 12.4.
 
-![image](hhttps://github.com/JavaScriptN0ob/ioslike-calculator/blob/master/resources/images/calculator-looks01.PNG)
-![image](hhttps://github.com/JavaScriptN0ob/ioslike-calculator/blob/master/resources/images/calculator-looks02.PNG)
-![image](hhttps://github.com/JavaScriptN0ob/ioslike-calculator/blob/master/resources/images/calculator-looks03.PNG)
-![image](hhttps://github.com/JavaScriptN0ob/ioslike-calculator/blob/master/resources/images/calculator-looks04.PNG)
+![image](https://github.com/JavaScriptN0ob/ioslike-calculator/blob/master/resources/images/calculator-looks01.PNG)
+![image](https://github.com/JavaScriptN0ob/ioslike-calculator/blob/master/resources/images/calculator-looks02.PNG)
+![image](https://github.com/JavaScriptN0ob/ioslike-calculator/blob/master/resources/images/calculator-looks03.PNG)
+![image](https://github.com/JavaScriptN0ob/ioslike-calculator/blob/master/resources/images/calculator-looks04.PNG)
