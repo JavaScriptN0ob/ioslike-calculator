@@ -59,6 +59,9 @@ numbers.forEach(
       else {
         display.value = 0;
         calculateTimes = 0;
+        firstNumber = undefined;
+        secondNumber = undefined;
+        method = undefined;
         if(document.querySelector('.buttons__operator--clicked')) {
           firstNumber = display.value;
           // console.log(firstNumber);
