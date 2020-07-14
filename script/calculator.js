@@ -336,4 +336,3 @@ equal.addEventListener('click', () => {
       break;
   }
 })
-
