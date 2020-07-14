@@ -30,9 +30,9 @@ let operator = document.querySelectorAll('.operator');
 let equal = document.querySelector('.equal');
 var firstNumber = 0;
 var secondNumber = 0;
-var methodLastStep = undefined;
 var method = undefined;
 var calculateTimes = 0;
+var operatorLast = [];
 
 
 numbers.forEach(
@@ -45,7 +45,7 @@ numbers.forEach(
       if(calculateTimes == 0){
         if(document.querySelector('.buttons__operator--clicked')) {
           firstNumber = display.value;
-          console.log(firstNumber);
+          // console.log(firstNumber);
           display.value = 0;
           document.querySelector('.buttons__operator--clicked').classList.remove('buttons__operator--clicked');
         }
@@ -61,7 +61,7 @@ numbers.forEach(
         calculateTimes = 0;
         if(document.querySelector('.buttons__operator--clicked')) {
           firstNumber = display.value;
-          console.log(firstNumber);
+          // console.log(firstNumber);
           display.value = 0;
           document.querySelector('.buttons__operator--clicked').classList.remove('buttons__operator--clicked');
         }
@@ -96,7 +96,8 @@ status.forEach(
         display.value = 0;
         firstNumber = undefined;
         secondNumber = undefined;
-        method = undefined; 
+        method = undefined;
+        operatorLast = []; 
         document.getElementById('+').classList.remove('buttons__operator--clicked');
         document.getElementById('-').classList.remove('buttons__operator--clicked');
         document.getElementById('x').classList.remove('buttons__operator--clicked');
@@ -116,32 +117,50 @@ operator.forEach(
   (operator) => {
     operator.addEventListener('click', () => {
       // operator.classList.add('buttons__operator--clicked');
-      methodLastStep = operator.innerText;
-      console.log(` last step operator is ${methodLastStep}`);
+      operatorLast.push(`${operator.innerText}`);
+      console.log(operatorLast);
+      console.log(operatorLast[operatorLast.length - 2]);
       switch (operator.innerText) {
         case '+':
           operator.classList.add('buttons__operator--clicked');
           document.getElementById('-').classList.remove('buttons__operator--clicked');
           document.getElementById('x').classList.remove('buttons__operator--clicked');
           document.getElementById('÷').classList.remove('buttons__operator--clicked');
-          console.log('operator is +');
+          // console.log('operator is +');
           method = `${operator.innerText}`;
           calculateTimes = 0;
           secondNumber = display.value;
           if(firstNumber && secondNumber) {
-            switch(method) {
-              case '+':
-                display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
-                break;
-              case '-':
-                display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
-                break;
-              case 'x':
-                display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
-                break;
-              case '÷':
-                display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
-                break;
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
             }
           }
           break;
@@ -150,24 +169,41 @@ operator.forEach(
           document.getElementById('+').classList.remove('buttons__operator--clicked');
           document.getElementById('x').classList.remove('buttons__operator--clicked');
           document.getElementById('÷').classList.remove('buttons__operator--clicked');
-          console.log('operator is -');
+          // console.log('operator is -');
           method = `${operator.innerText}`;
           calculateTimes = 0;
           secondNumber = display.value;
           if(firstNumber && secondNumber) {
-            switch(method) {
-              case '+':
-                display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
-                break;
-              case '-':
-                display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
-                break;
-              case 'x':
-                display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
-                break;
-              case '÷':
-                display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
-                break;
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
             }
           }
           break;
@@ -176,24 +212,41 @@ operator.forEach(
           document.getElementById('+').classList.remove('buttons__operator--clicked');
           document.getElementById('-').classList.remove('buttons__operator--clicked');
           document.getElementById('÷').classList.remove('buttons__operator--clicked');
-          console.log('operator is *');
+          // console.log('operator is *');
           method = `${operator.innerText}`;
           secondNumber = display.value;
           calculateTimes = 0;
           if(firstNumber && secondNumber) {
-            switch(method) {
-              case '+':
-                display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
-                break;
-              case '-':
-                display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
-                break;
-              case 'x':
-                display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
-                break;
-              case '÷':
-                display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
-                break;
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
             }
           }
           break;
@@ -202,24 +255,41 @@ operator.forEach(
           document.getElementById('+').classList.remove('buttons__operator--clicked');
           document.getElementById('-').classList.remove('buttons__operator--clicked');
           document.getElementById('x').classList.remove('buttons__operator--clicked');
-          console.log('operator is /');
+          // console.log('operator is /');
           method = `${operator.innerText}`;
           calculateTimes = 0;
           secondNumber = display.value;
           if(firstNumber && secondNumber) {
-            switch(method) {
-              case '+':
-                display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
-                break;
-              case '-':
-                display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
-                break;
-              case 'x':
-                display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
-                break;
-              case '÷':
-                display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
-                break;
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
             }
           }
           break;
@@ -230,11 +300,11 @@ operator.forEach(
 
 equal.addEventListener('click', () => {
   // if(document.querySelector('.buttons__operator--clicked') === null) return;
-  console.log(firstNumber);
+  // console.log(firstNumber);
   secondNumber = display.value;
   display.value = '';
-  console.log(secondNumber);
-  console.log(method);
+  // console.log(secondNumber);
+  // console.log(method);
   document.getElementById('+').classList.remove('buttons__operator--clicked');
   document.getElementById('-').classList.remove('buttons__operator--clicked');
   document.getElementById('x').classList.remove('buttons__operator--clicked');
