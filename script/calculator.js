@@ -296,46 +296,95 @@ operator.forEach(
             }
           }
           break;
+        case '=':
+          operator.classList.add('buttons__operator--clicked');
+          document.getElementById('+').classList.remove('buttons__operator--clicked');
+          document.getElementById('-').classList.remove('buttons__operator--clicked');
+          document.getElementById('x').classList.remove('buttons__operator--clicked');
+          document.getElementById('÷').classList.remove('buttons__operator--clicked');
+          setTimeout(
+            () => {
+              document.getElementById('=').classList.remove('buttons__operator--clicked');
+            }, 100
+          )
+          // console.log('operator is /');
+          method = `${operator.innerText}`;
+          calculateTimes = 0;
+          secondNumber = display.value;
+          if(firstNumber && secondNumber) {
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            }
+          }
+          break;
       }
     })
   }
 )
 
-equal.addEventListener('click', () => {
-  // if(document.querySelector('.buttons__operator--clicked') === null) return;
-  // console.log(firstNumber);
-  secondNumber = display.value;
-  display.value = '';
-  // console.log(secondNumber);
-  // console.log(method);
-  document.getElementById('+').classList.remove('buttons__operator--clicked');
-  document.getElementById('-').classList.remove('buttons__operator--clicked');
-  document.getElementById('x').classList.remove('buttons__operator--clicked');
-  document.getElementById('÷').classList.remove('buttons__operator--clicked');
-  // setTimeout(() => {
-  //   method = undefined
-  // }, 2000);
-  // if(method === undefined) {
-  //   alert('you need to enter a operator eg.+');
-  //   display.value = 0;
-  // }
-  switch(method) {
-    case '+':
-      display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
-      calculateTimes += 1;
-      // console.log(`you have calculated ${calculateTimes} time/times`);
-      break;
-    case '-':
-      display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
-      calculateTimes += 1;
-      break;
-    case 'x':
-      display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
-      calculateTimes += 1;
-      break;
-    case '÷':
-      display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
-      calculateTimes += 1;
-      break;
-  }
-})
+// equal.addEventListener('click', () => {
+//   // if(document.querySelector('.buttons__operator--clicked') === null) return;
+//   // console.log(firstNumber);
+//   secondNumber = display.value;
+//   display.value = '';
+//   // console.log(secondNumber);
+//   // console.log(method);
+//   document.getElementById('+').classList.remove('buttons__operator--clicked');
+//   document.getElementById('-').classList.remove('buttons__operator--clicked');
+//   document.getElementById('x').classList.remove('buttons__operator--clicked');
+//   document.getElementById('÷').classList.remove('buttons__operator--clicked');
+//   // setTimeout(() => {
+//   //   method = undefined
+//   // }, 2000);
+//   // if(method === undefined) {
+//   //   alert('you need to enter a operator eg.+');
+//   //   display.value = 0;
+//   // }
+//   switch(method) {
+//     case '+':
+//       display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+//       calculateTimes += 1;
+//       // console.log(`you have calculated ${calculateTimes} time/times`);
+//       break;
+//     case '-':
+//       display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+//       calculateTimes += 1;
+//       break;
+//     case 'x':
+//       display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+//       calculateTimes += 1;
+//       break;
+//     case '÷':
+//       display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+//       calculateTimes += 1;
+//       break;
+//   }
+// })
