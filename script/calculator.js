@@ -33,11 +33,25 @@ var secondNumber = 0;
 var method = undefined;
 var calculateTimes = 0;
 var operatorLast = [];
+let timerId = undefined;
+
+function scaleDisplay() {
+  let displayValue = display.value;
+  if(displayValue.length >= 8) {
+    display.classList.add('screen-smaller')
+  }
+  else {
+    display.classList.remove('screen-smaller')
+  }
+}
+
 
 
 numbers.forEach(
   (number) => {
+    
     number.addEventListener('click', () => {
+      scaleDisplay();
       number.classList.add('buttons__number--clicked');
       setTimeout((()=> {
         number.classList.remove('buttons__number--clicked')
@@ -119,6 +133,7 @@ status.forEach(
 operator.forEach(
   (operator) => {
     operator.addEventListener('click', () => {
+      scaleDisplay();
       // operator.classList.add('buttons__operator--clicked');
       operatorLast.push(`${operator.innerText}`);
       console.log(operatorLast);

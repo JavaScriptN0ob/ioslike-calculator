@@ -57,6 +57,10 @@ body {
   -moz-appearance: textfield;
 }
 
+.screen-smaller {
+  font-size: 1.7rem;
+}
+
 .calculator__buttons {
   /* border: 1px solid red; */
   height: 72%;
