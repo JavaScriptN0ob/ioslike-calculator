@@ -1,0 +1,28 @@
+{
+  "name": "ioslike-calculator",
+  "version": "1.0.0",
+  "description": "for a better presenting, I did not create new branch under the calculator repository.",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-static": "^1.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JavaScriptN0ob/ioslike-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JavaScriptN0ob/ioslike-calculator/issues"
+  },
+  "homepage": "https://github.com/JavaScriptN0ob/ioslike-calculator#readme"
+}

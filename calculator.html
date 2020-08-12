@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style/calculator.css">
+  <title>IOS like calculator</title>
+  <style>
+    body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.calculator__wrapper {
+  /* border: 1px solid black; */
+  background-color: #e0e0e0;
+  position: relative;
+  width: 480px;
+  height: 480px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.calculator__container {
+  /* border: 1px solid violet; */
+  width: 250px;
+  height: 440px;
+  margin-top: 20px;
+  background-color: #000000;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.calculator__screen-container {
+  /* border: 1px solid gold; */
+  height: 28%;
+  display: flex;
+  align-items: flex-end;
+  /* justify-content: flex-end; */
+}
+
+.screen {
+  /* border: 1px solid green; */
+  font-size: 2.7rem;
+  color: #ffffff;
+  background-color: #000000;
+  width: 100%;
+  text-align: right;
+  padding-right: 10px;
+  outline: none !important;
+  border: none !important;
+  border-color: #000000 !important;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
+  /* delete the arrow button at the right of input, when input type is a number */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.screen-smaller {
+  font-size: 1.7rem;
+}
+
+.calculator__buttons {
+  /* border: 1px solid red; */
+  height: 72%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.calculator__buttons-column {
+  /* border: 1px solid brown; */
+  display: flex;
+  flex-direction: row;
+}
+
+.calculator__buttons-column > div {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.zero {
+  width: 110px !important;
+  border-radius: 50px !important;
+}
+
+.buttons__status {
+  /* border: 1px solid crimson; */
+  background-color: #c0c0c0;
+}
+
+.buttons__status--clicked {
+  background-color: #dfdfdf;
+}
+
+.buttons__operator {
+  /* border: 1px solid blue; */
+  background-color: #ff9e1f;
+  color: #ffffff;
+}
+
+.buttons__operator--clicked {
+  color: #ff9e1f;
+  background-color: #ffffff;
+}
+
+.buttons__number {
+  /* border: 1px solid yellow; */
+  background-color: #5a5a5a;
+  color: #ffffff;
+}
+
+.buttons__number--clicked {
+  background-color: #949494;
+}
+
+.author {
+  margin-top: 40px;
+  padding: 0px 100px;
+  width: 100vw;
+}
+
+.authorName, .authorEmail {
+  color: #ff7070;
+  margin-left: 20px;
+}
+
+.authorName:hover::after {
+  content: "if your mouse stop here mean you like my project";
+  margin-left: 20px;
+  color: pink;
+  border-top-color: lightgreen;
+  border-right-color: red;
+  border-bottom-color: burlywood;
+  border-left-color: purple;
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+marquee > p > a {
+  margin-left: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid transparent;
+  background-color: #007cc2;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+a:hover {
+  background-color: #005485;
+}
+  </style>
+</head>
+<body>
+  <header>
+    
+  </header>
+  <main class="calculator__wrapper">
+    <div class="calculator__container">
+      <div class="calculator__screen-container">
+        <input class="screen" type="text" value="0">
+      </div>
+      <div class="calculator__buttons">
+        <div class="calculator__buttons-column">
+          <div class="buttons__status">AC</div>
+          <div class="buttons__status">+/-</div>
+          <div class="buttons__status" id="/">%</div>
+          <div class="buttons__operator operator" id="÷">÷</div>
+        </div>
+        <div class="calculator__buttons-column">
+          <div class="buttons__number number">7</div>
+          <div class="buttons__number number">8</div>
+          <div class="buttons__number number">9</div>
+          <div class="buttons__operator operator" id="x">x</div>
+        </div>
+        <div class="calculator__buttons-column">
+          <div class="buttons__number number">4</div>
+          <div class="buttons__number number">5</div>
+          <div class="buttons__number number">6</div>
+          <div class="buttons__operator operator" id="-">-</div>
+        </div>
+        <div class="calculator__buttons-column">
+          <div class="buttons__number number">1</div>
+          <div class="buttons__number number">2</div>
+          <div class="buttons__number number">3</div>
+          <div class="buttons__operator operator" id="+">+</div>
+        </div>
+        <div class="calculator__buttons-column">
+          <div class="buttons__number number zero">0</div>
+          <div class="buttons__number dot">.</div>
+          <div class="buttons__operator operator" id="=">=</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="author">
+      <marquee 
+        direction="left" 
+        behavior="alternate" 
+        scrollamount="4"
+        onmouseover="this.stop()"
+        onmouseout="this.start()"
+        >
+        <p>Author: <span class="authorName">Wenpei Z</span></p>
+        <p>Email: <span class="authorEmail">wenpeijs@gmail.com</span>
+          <a href=mailto:wenpeijs@gamil.com>Email WenpeiZ</a>
+        </p>
+      </marquee>
+  </div>
+    <script src="./script/calculator.js"></script>
+    <script>
+      // class Calculator {
+//   constructor(currentInput) {
+//     this.currentInput = currentInput;
+//     this.allClear();
+//   }
+
+//   allClear() {
+//     this.currentInput = '0';
+//     this.operator = undefined;
+//   }
+
+//   negative() {
+//     this.currentInput = this.currentInput * -1;
+//   }
+
+//   percentage() {
+//     this.currentInput = this.currentInput / 100;
+//   }
+
+//   clearFirstZero() {
+//     if(this.)
+//   }
+// }
+
+let numbers = document.querySelectorAll('.number');
+let display = document.querySelector('.screen');
+let dot = document.querySelector('.dot');
+let status = document.querySelectorAll('.buttons__status');
+let operator = document.querySelectorAll('.operator');
+let equal = document.querySelector('.equal');
+var firstNumber = 0;
+var secondNumber = 0;
+var method = undefined;
+var calculateTimes = 0;
+var operatorLast = [];
+let timerId = undefined;
+
+function scaleDisplay() {
+  let displayValue = display.value;
+  if(displayValue.length >= 8) {
+    display.classList.add('screen-smaller')
+  }
+  else {
+    display.classList.remove('screen-smaller')
+  }
+}
+
+
+
+numbers.forEach(
+  (number) => {
+    
+    number.addEventListener('click', () => {
+      scaleDisplay();
+      number.classList.add('buttons__number--clicked');
+      setTimeout((()=> {
+        number.classList.remove('buttons__number--clicked')
+      }), 150);
+      if(calculateTimes == 0){
+        if(document.querySelector('.buttons__operator--clicked')) {
+          firstNumber = display.value;
+          // console.log(firstNumber);
+          display.value = 0;
+          document.querySelector('.buttons__operator--clicked').classList.remove('buttons__operator--clicked');
+        }
+        if(display.value.indexOf(0) === 0){
+          if(display.value.indexOf('.') !== 1) {
+            display.value = display.value.replace(0, '');
+          }
+        }
+        display.value += `${number.innerText}`;
+      }
+      else {
+        display.value = 0;
+        calculateTimes = 0;
+        firstNumber = undefined;
+        secondNumber = undefined;
+        method = undefined;
+        if(document.querySelector('.buttons__operator--clicked')) {
+          firstNumber = display.value;
+          // console.log(firstNumber);
+          display.value = 0;
+          document.querySelector('.buttons__operator--clicked').classList.remove('buttons__operator--clicked');
+        }
+        if(display.value.indexOf(0) === 0){
+          if(display.value.indexOf('.') !== 1) {
+            display.value = display.value.replace(0, '');
+          }
+        }
+        display.value += `${number.innerText}`;
+      }
+    });
+  }
+);
+
+dot.addEventListener('click', () => {
+  if(display.value.indexOf('.') === -1) {
+    display.value += dot.innerText;
+  }
+})
+
+
+status.forEach( 
+  (status) => {
+    status.addEventListener('click', () => {
+      status.classList.add('buttons__status--clicked');
+      setTimeout((()=> {
+        status.classList.remove('buttons__status--clicked')
+      }), 150);
+    switch (status.innerText) {
+      case 'AC':
+        if(display.value === 0) return;
+        display.value = 0;
+        firstNumber = undefined;
+        secondNumber = undefined;
+        method = undefined;
+        operatorLast = []; 
+        document.getElementById('+').classList.remove('buttons__operator--clicked');
+        document.getElementById('-').classList.remove('buttons__operator--clicked');
+        document.getElementById('x').classList.remove('buttons__operator--clicked');
+        document.getElementById('÷').classList.remove('buttons__operator--clicked');
+        break;
+      case '+/-':
+        display.value = display.value * -1;
+        break;
+      case '%':
+        display.value = display.value / 100;
+        break;
+    }
+  });
+});
+
+operator.forEach(
+  (operator) => {
+    operator.addEventListener('click', () => {
+      scaleDisplay();
+      // operator.classList.add('buttons__operator--clicked');
+      operatorLast.push(`${operator.innerText}`);
+      console.log(operatorLast);
+      console.log(operatorLast[operatorLast.length - 2]);
+      switch (operator.innerText) {
+        case '+':
+          operator.classList.add('buttons__operator--clicked');
+          document.getElementById('-').classList.remove('buttons__operator--clicked');
+          document.getElementById('x').classList.remove('buttons__operator--clicked');
+          document.getElementById('÷').classList.remove('buttons__operator--clicked');
+          // console.log('operator is +');
+          method = `${operator.innerText}`;
+          calculateTimes = 0;
+          secondNumber = display.value;
+          if(firstNumber && secondNumber) {
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            }
+          }
+          break;
+        case '-':
+          operator.classList.add('buttons__operator--clicked');
+          document.getElementById('+').classList.remove('buttons__operator--clicked');
+          document.getElementById('x').classList.remove('buttons__operator--clicked');
+          document.getElementById('÷').classList.remove('buttons__operator--clicked');
+          // console.log('operator is -');
+          method = `${operator.innerText}`;
+          calculateTimes = 0;
+          secondNumber = display.value;
+          if(firstNumber && secondNumber) {
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            }
+          }
+          break;
+        case 'x':
+          operator.classList.add('buttons__operator--clicked');
+          document.getElementById('+').classList.remove('buttons__operator--clicked');
+          document.getElementById('-').classList.remove('buttons__operator--clicked');
+          document.getElementById('÷').classList.remove('buttons__operator--clicked');
+          // console.log('operator is *');
+          method = `${operator.innerText}`;
+          secondNumber = display.value;
+          calculateTimes = 0;
+          if(firstNumber && secondNumber) {
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            }
+          }
+          break;
+        case '÷':
+          operator.classList.add('buttons__operator--clicked');
+          document.getElementById('+').classList.remove('buttons__operator--clicked');
+          document.getElementById('-').classList.remove('buttons__operator--clicked');
+          document.getElementById('x').classList.remove('buttons__operator--clicked');
+          // console.log('operator is /');
+          method = `${operator.innerText}`;
+          calculateTimes = 0;
+          secondNumber = display.value;
+          if(firstNumber && secondNumber) {
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            }
+          }
+          break;
+        case '=':
+          operator.classList.add('buttons__operator--clicked');
+          document.getElementById('+').classList.remove('buttons__operator--clicked');
+          document.getElementById('-').classList.remove('buttons__operator--clicked');
+          document.getElementById('x').classList.remove('buttons__operator--clicked');
+          document.getElementById('÷').classList.remove('buttons__operator--clicked');
+          setTimeout(
+            () => {
+              document.getElementById('=').classList.remove('buttons__operator--clicked');
+            }, 100
+          )
+          // console.log('operator is /');
+          method = `${operator.innerText}`;
+          calculateTimes = 0;
+          secondNumber = display.value;
+          if(firstNumber && secondNumber) {
+            if(operatorLast.length < 2) {
+              switch(method) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            } else {
+              switch(operatorLast[operatorLast.length - 2]) {
+                case '+':
+                  display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+                  break;
+                case '-':
+                  display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+                  break;
+                case 'x':
+                  display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+                  break;
+                case '÷':
+                  display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+                  break;
+              }
+            }
+          }
+          break;
+      }
+    })
+  }
+)
+
+// equal.addEventListener('click', () => {
+//   // if(document.querySelector('.buttons__operator--clicked') === null) return;
+//   // console.log(firstNumber);
+//   secondNumber = display.value;
+//   display.value = '';
+//   // console.log(secondNumber);
+//   // console.log(method);
+//   document.getElementById('+').classList.remove('buttons__operator--clicked');
+//   document.getElementById('-').classList.remove('buttons__operator--clicked');
+//   document.getElementById('x').classList.remove('buttons__operator--clicked');
+//   document.getElementById('÷').classList.remove('buttons__operator--clicked');
+//   // setTimeout(() => {
+//   //   method = undefined
+//   // }, 2000);
+//   // if(method === undefined) {
+//   //   alert('you need to enter a operator eg.+');
+//   //   display.value = 0;
+//   // }
+//   switch(method) {
+//     case '+':
+//       display.value = parseFloat(firstNumber)+parseFloat(secondNumber);
+//       calculateTimes += 1;
+//       // console.log(`you have calculated ${calculateTimes} time/times`);
+//       break;
+//     case '-':
+//       display.value = parseFloat(firstNumber)-parseFloat(secondNumber);
+//       calculateTimes += 1;
+//       break;
+//     case 'x':
+//       display.value = parseFloat(firstNumber)*parseFloat(secondNumber);
+//       calculateTimes += 1;
+//       break;
+//     case '÷':
+//       display.value = parseFloat(firstNumber)/parseFloat(secondNumber);
+//       calculateTimes += 1;
+//       break;
+//   }
+// })
+
+    </script>
+  </footer>
+</body>
+</html>
